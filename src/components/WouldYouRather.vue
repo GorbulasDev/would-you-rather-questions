@@ -22,6 +22,7 @@ export default {
     answer2: String
   },
   data() {
+  // Local state.
     return {
       choice: ''
     }

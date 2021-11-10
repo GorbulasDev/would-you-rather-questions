@@ -22,6 +22,7 @@ export default {
   components: {
     WouldYouRather
   },
+  // Local state.
   data() {
     return {
       wyrQuestion: 'Would you rather live in a house shaped like a circle or a triangle?',
@@ -31,6 +32,7 @@ export default {
     }
   },
   methods: {
+    // Accept the Child's object.
     answerChanged(choice) {
       this.userSelectionMessage = `Thanks! You chose ${choice}!`
     }
