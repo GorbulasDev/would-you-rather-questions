@@ -2,19 +2,23 @@
   <div class="hello">
     <h2>Please make your choice:</h2>
 
+    <!-- The question itself -->
     <h3>{{ question }}</h3>
 
+    <!-- The first choice the user is offered -->
     <input type="radio" v-model="choice" v-bind:value="answer1" v-on:change="choiceMade">
     <label>{{ answer1 }}</label>
 
+    <!-- The second choice the user is offered -->
     <input type="radio" v-model="choice" v-bind:value="answer2" v-on:change="choiceMade">
     <label>{{ answer2 }}</label>
   </div>
 </template>
 
 <script>
+// The props which are used by the parent component
 export default {
-  name: 'WouldYouRather',
+  name: 'WouldYouRatherQuestion',
   emits: ['answer-changed'],
   props: {
     question: String,
@@ -22,12 +26,12 @@ export default {
     answer2: String
   },
   data() {
-  // Local state.
     return {
       choice: ''
     }
   },
   methods: {
+    // Sends the payload response to the parent component
     choiceMade() {
       this.$emit('answer-changed', this.choice)
     }
@@ -35,6 +39,7 @@ export default {
 }
 </script>
 
+<!-- Style below is only for this component -->
 <style scoped>
 h3 {
   margin: 40px 0 0;
