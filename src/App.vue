@@ -5,15 +5,25 @@
   <!-- We are inside WouldYouRatherQuestion, thus using its props as values -->
   <!-- We are iterating over each question and displaying them accordingly, with their props and values -->
   <would-you-rather-question
-    v-for="wyrQuestion in questions"
-    v-bind:question="wyrQuestion"
-    v-bind:answer1="answer1"
-    v-bind:answer2="answer2"
-    v-on:answer-changed="answerChanged">
+    v-for="question in questions"
+    v-bind:question="question.question"
+    v-bind:key="question.id"
+
+    v-bind:answer1="question.answer1"
+    v-bind:answer2="question.answer2"
+    
+    v-on:answer-changed="answerChanged"
+
+    v-bind:id="question.id">
   </would-you-rather-question>
-  
+
+  <h1>Would You Rather...</h1>
+  <p>...? Try making a selection above</p>
+
   <!-- Placeholder that displays what the user selected as the option -->
-  <p>{{ userSelectionMessage }}</p>
+  <div v-for="question in questions">
+  </div>
+
 </div>
 </template>
 
@@ -35,31 +45,38 @@ export default {
         id: 0,
         question: 'Would you rather be able to type/text very fast or be able to read really quickly?',
         answer1: 'Type/Text very fast',
-        answer1: 'Read very quickly',
+        answer2: 'Read very quickly'
       },
       // Second question, with choices offered
       {
         id: 1,
         question: 'Would you rather be really good at math or really good at sports?',
         answer1: 'Math',
-        answer1: 'Sports',
+        answer2: 'Sports'
       },
       // Third question, with choices offered
       {
         id: 2,
         question: 'Would you rather be able to control fire or water?',
         answer1: 'Fire',
-        answer1: 'Water',
-      }]
+        answer2: 'Water'
+      }],
+
+      userSelectionMessage: '',
+
+      selectedAnswers: []
     }
   },
   methods: {
     // Accept the Child's object payload
-    answerChanged(choice) {
-      this.userSelectionMessage = `Thanks! You chose ${choice}!`
+    answerChanged(choice, id) {
+      this.selectedAnswers.push(choice)
+      console.log(choice, id)
     }
   }
 }
+
+
 </script>
 
 <!-- The style is applied globally to the app -->

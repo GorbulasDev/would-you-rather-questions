@@ -1,17 +1,23 @@
 <template>
-  <div class="hello">
+  <div class="wryQuestion">
     <h2>Please make your choice:</h2>
 
     <!-- The question itself -->
+    <h2>Would you rather...</h2>
     <h3>{{ question }}</h3>
 
     <!-- The first choice the user is offered -->
-    <input type="radio" v-model="choice" v-bind:value="answer1" v-on:change="choiceMade">
-    <label>{{ answer1 }}</label>
+    <div>    
+      <input type="radio" v-model="choice" v-bind:value="answer1" v-on:change="choiceMade">
+      <label>{{ answer1 }}</label>
+    </div>
 
     <!-- The second choice the user is offered -->
-    <input type="radio" v-model="choice" v-bind:value="answer2" v-on:change="choiceMade">
-    <label>{{ answer2 }}</label>
+    <div>
+      <input type="radio" v-model="choice" v-bind:value="answer2" v-on:change="choiceMade">
+      <label>{{ answer2 }}</label>
+    </div>
+
   </div>
 </template>
 
@@ -23,7 +29,8 @@ export default {
   props: {
     question: String,
     answer1: String,
-    answer2: String
+    answer2: String,
+    id: Number
   },
   data() {
     return {
@@ -33,7 +40,7 @@ export default {
   methods: {
     // Sends the payload response to the parent component
     choiceMade() {
-      this.$emit('answer-changed', this.choice)
+      this.$emit('answer-changed', this.choice, this.id)
     }
   }
 }
@@ -54,5 +61,9 @@ li {
 }
 a {
   color: #42b983;
+}
+
+.wryQuestion {
+  background: pink;
 }
 </style>
