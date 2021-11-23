@@ -28,7 +28,7 @@
 </template>
 
 <script>
-// Import the Child component into the main application
+// Import the Child component into the main application.
 import WouldYouRatherQuestion from './components/WouldYouRatherQuestion.vue'
 
 export default {
@@ -36,25 +36,22 @@ export default {
   components: {
     WouldYouRatherQuestion
   },
-  // Questions to ask the user (3 total questions), with 2 choices
   data() {
     return {
+      // Questions to ask the user (3 total questions), with 2 choices offered.
       questions: [
-      // First question, with choices offered
       {
         id: 0,
         question: 'Would you rather be able to type/text very fast or be able to read really quickly?',
         answer1: 'Type/Text very fast',
         answer2: 'Read very quickly'
       },
-      // Second question, with choices offered
       {
         id: 1,
         question: 'Would you rather be really good at math or really good at sports?',
         answer1: 'Math',
         answer2: 'Sports'
       },
-      // Third question, with choices offered
       {
         id: 2,
         question: 'Would you rather be able to control fire or water?',
@@ -64,19 +61,18 @@ export default {
 
       userSelectionMessage: '',
 
+      // Array to contain our stored values.
       selectedAnswers: []
     }
   },
   methods: {
-    // Accept the Child's object payload
+    // Accept the Child's object payload.
     answerChanged(choice, id) {
       this.selectedAnswers.push(choice)
       console.log(choice, id)
     }
   }
 }
-
-
 </script>
 
 <!-- The style is applied globally to the app -->

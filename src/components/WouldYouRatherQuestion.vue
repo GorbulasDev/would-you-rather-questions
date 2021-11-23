@@ -2,7 +2,6 @@
   <div class="wryQuestion">
     <h2>Please make your choice:</h2>
 
-    <!-- The question itself -->
     <h2>Would you rather...</h2>
     <h3>{{ question }}</h3>
 
@@ -39,6 +38,7 @@ export default {
   },
   methods: {
     // Sends the payload response to the parent component
+    // We are passing the choice and id from the child component
     choiceMade() {
       this.$emit('answer-changed', this.choice, this.id)
     }
