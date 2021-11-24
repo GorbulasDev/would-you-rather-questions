@@ -19,7 +19,7 @@
   <p>...? Try making a selection above</p>
 
   <!-- Placeholder that displays what the user selected as the option -->
-  <div id="choice" v-for="selectedChoice in selectedAnswers">
+  <div v-for="selectedChoice in selectedAnswers">
     <p>{{ selectedChoice }}</p>
   </div>
 
