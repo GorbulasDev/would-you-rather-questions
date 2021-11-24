@@ -65,5 +65,6 @@ a {
 
 .wryQuestion {
   background: pink;
+  border: 2px solid black;
 }
 </style>

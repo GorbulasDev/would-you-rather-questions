@@ -8,20 +8,19 @@
     v-for="question in questions"
     v-bind:question="question.question"
     v-bind:key="question.id"
-
     v-bind:answer1="question.answer1"
     v-bind:answer2="question.answer2"
-    
     v-on:answer-changed="answerChanged"
-
     v-bind:id="question.id">
+
   </would-you-rather-question>
 
   <h1>Would You Rather...</h1>
   <p>...? Try making a selection above</p>
 
   <!-- Placeholder that displays what the user selected as the option -->
-  <div v-for="question in questions">
+  <div id="choice" v-for="selectedChoice in selectedAnswers">
+    <p>{{ selectedChoice }}</p>
   </div>
 
 </div>
@@ -59,8 +58,6 @@ export default {
         answer2: 'Water'
       }],
 
-      userSelectionMessage: '',
-
       // Array to contain our stored values.
       selectedAnswers: []
     }
@@ -68,8 +65,7 @@ export default {
   methods: {
     // Accept the Child's object payload.
     answerChanged(choice, id) {
-      this.selectedAnswers.push(choice)
-      console.log(choice, id)
+      this.selectedAnswers[id] = choice
     }
   }
 }
